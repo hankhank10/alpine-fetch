@@ -4,6 +4,8 @@
 
 Straightforward interactive HTTP requests from within your [Alpine.JS](https://alpinejs.dev/) markup.
 
+[View the examples](https://hankhank10.github.io/alpine-fetch/examples/examples.html)
+
 ## What does this do?
 
 Alpine.JS is a rugged, minimal tool for composing behavior directly in your markup. It can be used, even by those with little experience in Javascript, to add interactivity to web pages.
@@ -130,7 +132,7 @@ However you can also customise when they do the fetch however you like. In the b
 
 ### Examples
 
-You can view all of these examples in the `examples/examples.html` file in this repo.
+You can view all of these examples in the `examples/examples.html` file in this repo or a live demo [here](https://hankhank10.github.io/alpine-fetch/examples/examples.html).
 
 ## Contributing
 
