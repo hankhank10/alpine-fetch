@@ -1,0 +1,54 @@
+
+
+// Alpine listeners
+document.addEventListener('alpine:init', async () => {
+
+    Alpine.magic('now', () => {
+        return (new Date).toLocaleTimeString()
+    })
+
+    Alpine.magic('fetchjson', () => {
+        return async (
+            url,
+            jsonItem = null,
+            method = "GET"
+        ) => {
+            let response = await xfetch(url = url, jsonItem = jsonItem, method = method)
+            return await response;
+        }
+    })
+
+    Alpine.magic('fetch', () => {
+        return async (
+            url,
+            method = "GET"
+        ) => {
+            let response = await xfetch(url = url, jsonItem = null, method = method)
+            return await response;
+        }
+    })
+
+})
+
+// Actual worker
+async function xfetch(url, jsonItem = null, method = 'GET') {
+
+    if (jsonItem == null) {
+
+        return fetch(url, {method: method})
+            .then((response) => response.text())
+            .then((responseText) => {
+                return responseText
+            });
+
+    } else {
+
+        return fetch(url, {method: method})
+            .then((response) => response.json())
+            .then((responseJson) => {
+                return responseJson[jsonItem]
+            });
+
+    }
+}
+

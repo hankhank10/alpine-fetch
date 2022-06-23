@@ -1,0 +1,60 @@
+<html data-theme="light" lang="en">
+<head>
+    <script defer src="../alpine-fetch.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="output.css">
+
+</head>
+
+<body class="p-10">
+
+<div>
+
+    <article class="prose">
+        <h2>Introduction</h2>
+        <p>All of these examples use a simple API with the following endpoints:</p>
+        <ul>
+            <li><a href="https://weathermockapi.herokuapp.com/hello_world">https://weathermockapi.herokuapp.com/hello_world</a></li>
+            <li><a href="https://weathermockapi.herokuapp.com/hello_world_html">https://weathermockapi.herokuapp.com/hello_world_html</a></li>
+            <li><a href="https://weathermockapi.herokuapp.com/some_json">https://weathermockapi.herokuapp.com/some_json</a></li>
+        </ul>
+    </article>
+
+    <article class="prose mt-20">
+        <h2>String to x-text</h2>
+        <div x-data>
+            <span x-text="await $fetch('https://weathermockapi.herokuapp.com/hello_world')">This will be replaced</span>
+        </div>
+    </article>
+
+    <article class="prose mt-20">
+        <h2>String to x-html</h2>
+        <div x-data>
+            <span x-html="await $fetch('https://weathermockapi.herokuapp.com/hello_world_html')"></span>
+        </div>
+    </article>
+
+
+    <article class="prose mt-20">
+        <h2>Retrieving once, using multiple times</h2>
+        <div x-data="{ hello_world: $fetch('https://weathermockapi.herokuapp.com/hello_world') }">
+            <span x-text="await hello_world"></span><br>
+            <span x-text="await hello_world"></span>
+        </div>
+    </article>
+
+    <article class="prose mt-20">
+        <h2>Retrieving JSON</h2>
+        <div x-data>
+            The weather is <span x-text="await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"></span>
+        </div>
+    </article>
+
+
+
+</div>
+
+
+
+</body>
+</html>
