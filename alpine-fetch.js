@@ -30,7 +30,7 @@ document.addEventListener('alpine:init', async () => {
 
 })
 
-// Actual worker
+// Actual fetch function
 async function xfetch(url, jsonItem = null, method = 'GET') {
 
     if (jsonItem == null) {

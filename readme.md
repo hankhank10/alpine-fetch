@@ -1,14 +1,18 @@
 # Alpine Fetch
 
-Straightforward interactive HTTP requests from within HTTP requests to be executed within [Alpine.JS](https://alpinejs.dev/) markup.
+![GitHub file size in bytes](https://img.shields.io/github/size/hankhank10/alpine-fetch/alpine-fetch.js)
+
+Straightforward interactive HTTP requests from within your [Alpine.JS](https://alpinejs.dev/) markup.
 
 ## What does this do?
 
-### Native Alpine
-
 Alpine.JS is a rugged, minimal tool for composing behavior directly in your markup. It can be used, even by those with little experience in Javascript, to add interactivity to web pages.
 
-One area where it does not excel, imho, is the ability to easily make HTTP requests from within your markup. Someone looking to make a call on an API endpoint, might need to do something like the following:
+### Native Alpine approach to HTTP requests
+
+One area where it does require you to go outside markup is when making HTTP requests to dynamically populate parts of the page.
+
+Someone looking to make a call on an API endpoint, might need to do something like the following:
 
 ````html
 <div x-data="{
@@ -27,7 +31,7 @@ One area where it does not excel, imho, is the ability to easily make HTTP reque
 
 ### Alpine Fetch
 
-Alpine Fetch abstracts a lot of this away and makes it much more straightforward to populate your page via HTTP requests. The above example using Alpine Fetch would be:
+Alpine Fetch adds Alpine magic functions to abstract a lot of this away and makes it much more straightforward to populate your page via HTTP requests. The above example using Alpine Fetch would be:
 
 ````html
 <div x-data>
@@ -35,7 +39,7 @@ Alpine Fetch abstracts a lot of this away and makes it much more straightforward
 </div>
 ````
 
-Alpine Fetch can pull simple text from the server using the `$fetch` method or it can pull and parse JSON using the `$fetchjson` method.
+Alpine Fetch can fetch simple text from the server using the `$fetch` method or it can fetch and parse JSON using the `$fetchjson` method.
 
 It supports all HTTP methods such as `GET` and `POST` and `PUT`.
 
@@ -58,7 +62,7 @@ Unlike the generic Javascript `fetch` method which requires dealing with promise
 
 ### String to x-text
 
-The most basic example is to pull a string from the server and populate it in your markup via the `x-text` method of alpine.
+The most basic example is to fetch a string from the server and populate it in your markup via the `x-text` method of alpine.
 
 ```html
 <div x-data>
@@ -105,3 +109,12 @@ You might want to use the same data in multiple places in your markup. In that c
 <span x-text="await $fetch('/post_url', method='POST')"></span>
 <span x-text="await $fetch('/delete_url', method='DELETE')"></span>
 ````
+
+
+## Contributing
+
+I very much welcome comments, suggestions and contributions.
+
+If you notice issues please open an issue on Github.
+
+If you have improvements or suggestions please submit a pull request.
