@@ -110,6 +110,27 @@ You might want to use the same data in multiple places in your markup. In that c
 <span x-text="await $fetch('/delete_url', method='DELETE')"></span>
 ````
 
+### Responding to actions
+
+If you specify a DOM element or a variable to be equal to `$fetch` or `$fetchjson` then the methods will automatically fetch on init.
+
+However you can also customise when they do the fetch however you like. In the below example, it will fetch only when the user clicks the button.
+
+````html
+<div x-data="{ weather: 'uncertain at this stage' }">
+
+    The weather is <span x-text="weather"></span>
+    
+    <button
+            x-on:click="weather = await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"
+    >Click me to change the weather</button>
+
+</div>
+````
+
+### Examples
+
+You can view all of these examples in the `examples/examples.html` file in this repo.
 
 ## Contributing
 

@@ -46,7 +46,24 @@
     <article class="prose mt-20">
         <h2>Retrieving JSON</h2>
         <div x-data>
-            The weather is <span x-text="await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"></span>
+            <p>
+                The weather is <span x-text="await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"></span>
+            </p>
+        </div>
+    </article>
+
+    <article class="prose mt-20">
+        <h2>Responding to a button press</h2>
+        <div x-data="{ weather: 'uncertain at this stage' }">
+            <p>
+                The weather is <span x-text="weather"></span>
+            </p>
+
+            <button
+                    class="btn"
+                    x-on:click="weather = await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"
+            >Click me to change the weather</button>
+
         </div>
     </article>
 
