@@ -45,7 +45,7 @@ It has no dependencies other than Alpine.
 Include the following `<script>` tag in the `<head>` of your document, **before** Alpine:
 
 ```html
-<script defer src="[to come]"></script>
+<script defer src="https://gitcdn.link/cdn/hankhank10/alpine-fetch/main/alpine-fetch.js"></script>
 ```
 
 ## Usage
