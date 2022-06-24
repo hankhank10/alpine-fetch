@@ -39,6 +39,9 @@ async function xfetch(url, jsonItem = null, method = 'GET') {
             .then((response) => response.text())
             .then((responseText) => {
                 return responseText
+            })
+            .catch((error) => {
+              console.log(error)
             });
 
     } else {
@@ -47,6 +50,9 @@ async function xfetch(url, jsonItem = null, method = 'GET') {
             .then((response) => response.json())
             .then((responseJson) => {
                 return responseJson[jsonItem]
+            })
+            .catch((error) => {
+              console.log(error)
             });
 
     }
