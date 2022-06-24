@@ -4,7 +4,7 @@
 
 Straightforward interactive HTTP requests from within your [Alpine.JS](https://alpinejs.dev/) markup.
 
-[View the live demo here](https://hankhank10.github.io/alpine-fetch/examples/examples.html)
+[View the live demo here](https://hankhank10.github.io/alpine-fetch/)
 
 ## What does this do?
 
