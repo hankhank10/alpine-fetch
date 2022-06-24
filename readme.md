@@ -10,9 +10,11 @@ Straightforward interactive HTTP requests from within your [Alpine.JS](https://a
 
 Alpine.JS is a rugged, minimal tool for composing behavior directly in your markup. It can be used, even by those with little experience in Javascript, to add interactivity to web pages.
 
+Alpine Fetch is a magic helper for Alpine.JS which makes it easy to do HTTP requests within markup.
+
 ### Native Alpine approach to HTTP requests
 
-One area where it does require you to go outside markup is when making HTTP requests to dynamically populate parts of the page.
+One area where Alpine does require you to go outside markup is when making HTTP requests to dynamically populate parts of the page.
 
 Someone looking to make a call on an API endpoint, might need to do something like the following:
 
@@ -33,7 +35,7 @@ Someone looking to make a call on an API endpoint, might need to do something li
 
 ### Alpine Fetch
 
-Alpine Fetch adds Alpine magic functions to abstract a lot of this away and makes it much more straightforward to populate your page via HTTP requests. The above example using Alpine Fetch would be:
+Alpine Fetch adds magic functions to abstract a lot of this away and makes it much more straightforward to populate your page via HTTP requests. The above example using Alpine Fetch would be:
 
 ````html
 <div x-data>
@@ -99,7 +101,7 @@ You might want to use the same data in multiple places in your markup. In that c
 
 ```html
 <div x-data>
-    <span x-text="await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='city_name')"></span>
+    <span x-text="await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"></span>
 </div>
 ```
 

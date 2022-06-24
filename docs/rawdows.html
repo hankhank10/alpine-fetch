@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1 id="alpine-fetch">Alpine Fetch</h1>
+<p><img src="https://img.shields.io/github/size/hankhank10/alpine-fetch/alpine-fetch.js" alt="GitHub file size in bytes"></p>
+<p>Straightforward interactive HTTP requests from within your <a href="https://alpinejs.dev/">Alpine.JS</a> markup.</p>
+<p><a href="https://hankhank10.github.io/alpine-fetch/examples/examples.html">View the live demo here</a></p>
+<h2 id="what-does-this-do-">What does this do?</h2>
+<p>Alpine.JS is a rugged, minimal tool for composing behavior directly in your markup. It can be used, even by those with little experience in Javascript, to add interactivity to web pages.</p>
+<h3 id="native-alpine-approach-to-http-requests">Native Alpine approach to HTTP requests</h3>
+<p>One area where Alpine does require you to go outside markup is when making HTTP requests to dynamically populate parts of the page.</p>
+<p>Someone looking to make a call on an API endpoint, might need to do something like the following:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>=<span class="hljs-string">"{
+        result: null,
+        async retrieveData() {
+            this.result = await (await fetch('/endpoint')).text();
+        }
+     }"</span>
+     <span class="hljs-attr">x-init</span>=<span class="hljs-string">"retrieveData()"</span>
+&gt;</span>
+     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"result"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>... which is quite verbose, and involves promises which are not straightforward for beginners.</p>
+<h3 id="alpine-fetch">Alpine Fetch</h3>
+<p>Alpine Fetch adds Alpine magic functions to abstract a lot of this away and makes it much more straightforward to populate your page via HTTP requests. The above example using Alpine Fetch would be:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('/endpoint)"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>Alpine Fetch can fetch simple text from the server using the <code>$fetch</code> method or it can fetch and parse JSON using the <code>$fetchjson</code> method.</p>
+<p>It supports all HTTP methods such as <code>GET</code> and <code>POST</code> and <code>PUT</code>.</p>
+<p>It has no dependencies other than Alpine.</p>
+<h2 id="installation">Installation</h2>
+<p>Include the following <code>&lt;script&gt;</code> tag in the <code>&lt;head&gt;</code> of your document, <strong>before</strong> Alpine:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">defer</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://gitcdn.link/cdn/hankhank10/alpine-fetch/main/alpine-fetch.js"</span>&gt;</span><span class="undefined"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h2 id="usage">Usage</h2>
+<p>At its most basic <code>$fetch</code> accepts a URL and returns the contents of that URL.</p>
+<p>Unlike the generic Javascript <code>fetch</code> method which requires dealing with promises, this simply waits for the response to be received and then returns it.</p>
+<p><code>$fetch</code> should be preceded by <code>await</code> to ensure that this happens.</p>
+<h3 id="string-to-x-text">String to x-text</h3>
+<p>The most basic example is to fetch a string from the server and populate it in your markup via the <code>x-text</code> method of alpine.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('https://weathermockapi.herokuapp.com/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="html-to-x-html">HTML to x-html</h3>
+<p>The <code>$fetch</code> helper can be used anywhere, so if you don&#39;t want to render it as text you can pass it to the <code>x-html</code> method of Alpine - or to a class, or any other part of the markup. It behaves like any other variable.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-html</span>=<span class="hljs-string">"await $fetch('https://weathermockapi.herokuapp.com/hello_world_html')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="retrieving-once-using-multiple-times">Retrieving once, using multiple times</h3>
+<p>You might want to use the same data in multiple places in your markup. In that case, it would make sense to just fetch it once and use it multiple times. You can do this by retrieving it into the <code>x-data</code> tag like any other variable.</p>
+<pre><code class="lang-html"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{ hello_world: await $fetch('https://weathermockapi.herokuapp.com/hello_world' }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"hello_world"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"hello_world"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+</code></pre>
+<h3 id="retrieving-json">Retrieving JSON</h3>
+<p><code>$fetch</code> retrieves data which it expects to be text, but you can also use <code>$fetchjson</code> to retrieve data which is JSON and then render the relevant part of that into your page.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='city_name')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<h3 id="specifying-a-method">Specifying a method</h3>
+<p><code>$fetch</code> and <code>$fetchjson</code> assume that you want to use a <code>GET</code> method but you can specify that you want to send another.</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('/post_url', method='POST')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('/delete_url', method='DELETE')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+</code></pre>
+<h3 id="responding-to-actions">Responding to actions</h3>
+<p>If you specify a DOM element or a variable to be equal to <code>$fetch</code> or <code>$fetchjson</code> then the methods will automatically fetch on init.</p>
+<p>However you can also customise when they do the fetch however you like. In the below example, it will fetch only when the user clicks the button.</p>
+<pre><code class="lang-html">&lt;<span class="hljs-keyword">div</span> x-data=<span class="hljs-string">"{ weather: 'uncertain at this stage' }"</span>&gt;
+
+    The weather <span class="hljs-keyword">is</span> &lt;span x-<span class="hljs-built_in">text</span>=<span class="hljs-string">"weather"</span>&gt;&lt;/span&gt;
+
+    &lt;button
+            x-<span class="hljs-keyword">on</span>:click=<span class="hljs-string">"weather = await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"</span>
+    &gt;Click <span class="hljs-keyword">me</span> <span class="hljs-keyword">to</span> change <span class="hljs-keyword">the</span> weather&lt;/button&gt;
+
+&lt;/<span class="hljs-keyword">div</span>&gt;
+</code></pre>
+<h3 id="examples">Examples</h3>
+<p>You can view all of these examples in the <code>examples/examples.html</code> file in this repo or a live demo <a href="https://hankhank10.github.io/alpine-fetch/examples/examples.html">here</a>.</p>
+<h2 id="contributing">Contributing</h2>
+<p>I very much welcome comments, suggestions and contributions.</p>
+<p>If you notice issues please open an issue on Github.</p>
+<p>If you have improvements or suggestions please submit a pull request.</p>
+
+
+
+</body>
+</html>
