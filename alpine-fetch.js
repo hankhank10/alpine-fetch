@@ -3,10 +3,6 @@
 // Alpine listeners
 document.addEventListener('alpine:init', async () => {
 
-    Alpine.magic('now', () => {
-        return (new Date).toLocaleTimeString()
-    })
-
     Alpine.magic('fetchjson', () => {
         return async (
             url,
