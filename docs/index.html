@@ -1,7 +1,7 @@
 <html data-theme="light" lang="en">
 
     <head>
-        <script defer src="../alpine-fetch.js"></script>
+        <script defer src="https://cdn.jsdelivr.net/gh/hankhank10/alpine-fetch@main/alpine-fetch.js"></script>
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <link rel="stylesheet" href="output.css">
         <Title>Alpine Fetch</Title>
@@ -86,7 +86,8 @@
 
                 <h3 class="mt-10">String to x-text</h3>
                 <p>The most basic example is to fetch a string from the server and populate it in your markup via the
-                    <code>x-text</code> method of alpine.</p>
+                    <code>x-text</code> method of alpine.
+                </p>
                 <pre><code class="lang-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span<span class="hljs-tag">
     &lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('https://weathermockapi.herokuapp.com/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -121,7 +122,8 @@
                 <h3 class="mt-10">Retrieving once, using multiple times</h3>
                 <p>You might want to use the same data in multiple places in your markup. In that case, it would make
                     sense to just fetch it once and use it multiple times. You can do this by retrieving it into the
-                    <code>x-data</code> tag like any other variable.</p>
+                    <code>x-data</code> tag like any other variable.
+                </p>
                 <pre><code class="lang-html"><span class="xml">
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{ hello_world: await $fetch('https://weathermockapi.herokuapp.com/hello_world' }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"hello_world"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -141,7 +143,8 @@
                 <h3 class="mt-10">Retrieving JSON</h3>
                 <p><code>$fetch</code> retrieves data which it expects to be text, but you can also use
                     <code>$fetchjson</code> to retrieve data which is JSON and then render the relevant part of that
-                    into your page.</p>
+                    into your page.
+                </p>
                 <pre><code class="lang-html"><span class="hljs-tag">
 &lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetchjson('https://weathermockapi.herokuapp.com/some_json', jsonItem='weather')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
@@ -169,7 +172,8 @@
 
                 <h3 id="responding-to-actions">Responding to actions</h3>
                 <p>If you specify a DOM element or a variable to be equal to <code>$fetch</code> or
-                    <code>$fetchjson</code> then the methods will automatically fetch on init.</p>
+                    <code>$fetchjson</code> then the methods will automatically fetch on init.
+                </p>
                 <p>However you can also customise when they do the fetch however you like. In the below example, it will
                     fetch only when the user clicks the button.</p>
                 <pre><code class="lang-html">
