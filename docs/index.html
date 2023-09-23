@@ -90,13 +90,14 @@
                 </p>
                 <pre><code class="lang-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span<span class="hljs-tag">
-    &lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    &lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('https://hankhank10.github.io/alpine-fetch/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             </code></pre>
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <span x-text="await $fetch('/hello_world')">This will be
+                        <span x-text="await $fetch('https://hankhank10.github.io/alpine-fetch/hello_world')">This will
+                            be
                             replaced</span>
                     </div>
                 </div>
@@ -107,14 +108,15 @@
                     the markup. It behaves like any other variable.</p>
                 <pre><code class="lang-html"><span class="hljs-tag">
 &lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-html</span>=<span class="hljs-string">"await $fetch('https://weathermockapi.herokuapp.com/hello_world_html')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-html</span>=<span class="hljs-string">"await $fetch('https://hankhank10.github.io/alpine-fetch/hello_world_html')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             </code></pre>
 
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <span x-html="await $fetch('https://weathermockapi.herokuapp.com/hello_world_html')">This will
+                        <span x-html="await $fetch('https://hankhank10.github.io/alpine-fetch/hello_world_html')">This
+                            will
                             be replaced</span>
                     </div>
                 </div>
@@ -133,7 +135,7 @@
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <div x-data="{ hello_world: $fetch('https://weathermockapi.herokuapp.com/hello_world') }">
+                        <div x-data="{ hello_world: $fetch('https://hankhank10.github.io/alpine-fetch/hello_world') }">
                             <span x-text="await hello_world"></span><br>
                             <span x-text="await hello_world"></span>
                         </div>
