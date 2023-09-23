@@ -90,13 +90,13 @@
                 </p>
                 <pre><code class="lang-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span<span class="hljs-tag">
-    &lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('https://weathermockapi.herokuapp.com/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    &lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             </code></pre>
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <span x-text="await $fetch('https://weathermockapi.herokuapp.com/hello_world')">This will be
+                        <span x-text="await $fetch('/hello_world')">This will be
                             replaced</span>
                     </div>
                 </div>
