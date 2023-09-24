@@ -1,9 +1,0 @@
-{
-    "city_name": "London",
-    "country_name": "United Kingdom",
-    "population": 8000000,
-    "weather": "sunny",
-    "temperature": random.randint(20, 30),
-    "wind_speed": random.randint(0, 10),
-    "wind_direction": random.choice(["N", "S", "E", "W"])
-}
