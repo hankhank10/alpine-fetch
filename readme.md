@@ -134,7 +134,7 @@ However you can also customise when they do the fetch however you like. In the b
 
 ### Examples
 
-You can view all of these examples in the `examples/examples.html` file in this repo or a live demo [here](https://hankhank10.github.io/alpine-fetch/examples/examples.html).
+You can view all of these examples in the `docs/index.html` file in this repo, or view a live hosted demo [here](https://hankhank10.github.io/alpine-fetch/examples/examples.html).
 
 ## Contributing
 
