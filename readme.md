@@ -1,10 +1,12 @@
 # Alpine Fetch
 
 ![GitHub file size in bytes](https://img.shields.io/github/size/hankhank10/alpine-fetch/alpine-fetch.js)
+![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 Straightforward interactive HTTP requests from within your [Alpine.JS](https://alpinejs.dev/) markup.
 
-[View the live demo here](https://hankhank10.github.io/alpine-fetch/)
+[View the live demo here](https://hankhank10.github.io/alpine-fetch/) | [Advanced Examples](./examples/advanced-examples.html)
 
 ## What does this do?
 
@@ -114,6 +116,39 @@ You might want to use the same data in multiple places in your markup. In that c
 <span x-text="await $fetch('/delete_url', method='DELETE')"></span>
 ````
 
+### Custom headers and request body
+
+You can pass custom headers and request body for more complex API interactions:
+
+````html
+<!-- With custom headers -->
+<span x-text="await $fetch('/api/protected', 'GET', { 'Authorization': 'Bearer token' })"></span>
+
+<!-- POST request with JSON body -->
+<span x-text="await $fetch('/api/users', 'POST', {}, { name: 'John', email: 'john@example.com' })"></span>
+
+<!-- JSON fetch with headers and body -->
+<span x-text="await $fetchjson('/api/data', 'result', 'POST', { 'Content-Type': 'application/json' }, { id: 1 })"></span>
+````
+
+### Error handling
+
+Alpine Fetch includes built-in error handling. Failed requests will return empty strings for text requests and `null` for JSON requests:
+
+````html
+<div x-data="{ data: null, error: null }">
+    <button @click="
+        try {
+            data = await $fetchjson('/api/data', 'result');
+        } catch (e) {
+            error = e.message;
+        }
+    ">Load Data</button>
+    <div x-text="data"></div>
+    <div x-show="error" x-text="error" style="color: red;"></div>
+</div>
+````
+
 ### Responding to actions
 
 If you specify a DOM element or a variable to be equal to `$fetch` or `$fetchjson` then the methods will automatically fetch on init.
@@ -135,6 +170,35 @@ However you can also customise when they do the fetch however you like. In the b
 ### Examples
 
 You can view all of these examples in the `docs/index.html` file in this repo, or view a live hosted demo [here](https://hankhank10.github.io/alpine-fetch/examples/examples.html).
+
+For advanced examples including headers, request bodies, and error handling, check out the [Advanced Examples](./examples/advanced-examples.html) page.
+
+## Development
+
+### Running tests
+
+```bash
+node tests/alpine-fetch.test.js
+```
+
+### Code quality
+
+```bash
+npm run lint    # Check code quality
+npm run format  # Format code
+```
+
+## Changelog
+
+### v2.0.0
+- ✨ Added support for custom headers
+- ✨ Added support for request bodies
+- ✨ Improved error handling
+- ✨ Added comprehensive JSDoc documentation
+- ✨ Added test suite
+- ✨ Added ESLint and Prettier configuration
+- ✨ Added package.json for better project management
+- 🐛 Fixed various edge cases and improved reliability
 
 ## Contributing
 

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpine Fetch - Advanced Examples</title>
+    <script defer src="https://cdn.jsdelivr.net/gh/hankhank10/alpine-fetch@main/alpine-fetch.js"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .example {
+            border: 1px solid #e1e5e9;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            background: #f8f9fa;
+        }
+        .code {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin: 10px 0;
+        }
+        .result {
+            background: #f0fff4;
+            border: 1px solid #68d391;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+        }
+        .error {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            color: #c53030;
+        }
+        button {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #3182ce;
+        }
+        .loading {
+            color: #718096;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>Alpine Fetch - Advanced Examples</h1>
+    <p>This page demonstrates advanced features of Alpine Fetch including headers, request bodies, and error handling.</p>
+
+    <!-- Example 1: POST Request with Body -->
+    <div class="example">
+        <h3>1. POST Request with JSON Body</h3>
+        <div class="code">
+            &lt;div x-data="{ 
+                user: { name: 'John Doe', email: 'john@example.com' },
+                response: ''
+            }"&gt;
+                &lt;button @click="response = await $fetch('/api/users', 'POST', {}, user)"&gt;
+                    Create User
+                &lt;/button&gt;
+                &lt;div x-text="response"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        </div>
+        <div class="result">
+            <div x-data="{ 
+                user: { name: 'John Doe', email: 'john@example.com' },
+                response: ''
+            }">
+                <button @click="response = await $fetch('/api/users', 'POST', {}, user)">
+                    Create User
+                </button>
+                <div x-text="response || 'Click the button to send a POST request'"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example 2: Custom Headers -->
+    <div class="example">
+        <h3>2. Request with Custom Headers</h3>
+        <div class="code">
+            &lt;div x-data="{ 
+                headers: { 'Authorization': 'Bearer token123', 'X-Custom-Header': 'value' },
+                response: ''
+            }"&gt;
+                &lt;button @click="response = await $fetch('/api/protected', 'GET', headers)"&gt;
+                    Fetch with Auth
+                &lt;/button&gt;
+                &lt;div x-text="response"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        </div>
+        <div class="result">
+            <div x-data="{ 
+                headers: { 'Authorization': 'Bearer token123', 'X-Custom-Header': 'value' },
+                response: ''
+            }">
+                <button @click="response = await $fetch('/api/protected', 'GET', headers)">
+                    Fetch with Auth
+                </button>
+                <div x-text="response || 'Click the button to send a request with custom headers'"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example 3: JSON Fetch with Error Handling -->
+    <div class="example">
+        <h3>3. JSON Fetch with Error Handling</h3>
+        <div class="code">
+            &lt;div x-data="{ 
+                weather: 'Loading...',
+                error: null
+            }"&gt;
+                &lt;button @click="
+                    try {
+                        weather = await $fetchjson('https://api.weatherapi.com/v1/current.json?key=YOUR_KEY&q=London', 'current');
+                    } catch (e) {
+                        error = e.message;
+                    }
+                "&gt;
+                    Get Weather
+                &lt;/button&gt;
+                &lt;div x-text="weather"&gt;&lt;/div&gt;
+                &lt;div x-show="error" x-text="error" class="error"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        </div>
+        <div class="result">
+            <div x-data="{ 
+                weather: 'Click button to fetch weather data',
+                error: null
+            }">
+                <button @click="
+                    try {
+                        weather = await $fetchjson('https://httpbin.org/json', 'slideshow');
+                    } catch (e) {
+                        error = e.message;
+                    }
+                ">
+                    Get JSON Data
+                </button>
+                <div x-text="weather"></div>
+                <div x-show="error" x-text="error" class="error"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example 4: Form Submission -->
+    <div class="example">
+        <h3>4. Form Submission</h3>
+        <div class="code">
+            &lt;div x-data="{ 
+                formData: { name: '', email: '' },
+                response: ''
+            }"&gt;
+                &lt;input x-model="formData.name" placeholder="Name"&gt;
+                &lt;input x-model="formData.email" placeholder="Email"&gt;
+                &lt;button @click="response = await $fetch('/api/submit', 'POST', {}, formData)"&gt;
+                    Submit Form
+                &lt;/button&gt;
+                &lt;div x-text="response"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        </div>
+        <div class="result">
+            <div x-data="{ 
+                formData: { name: '', email: '' },
+                response: ''
+            }">
+                <input x-model="formData.name" placeholder="Name" style="margin: 5px; padding: 8px;">
+                <input x-model="formData.email" placeholder="Email" style="margin: 5px; padding: 8px;">
+                <button @click="response = await $fetch('/api/submit', 'POST', {}, formData)">
+                    Submit Form
+                </button>
+                <div x-text="response || 'Fill the form and click submit'"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example 5: Loading States -->
+    <div class="example">
+        <h3>5. Loading States</h3>
+        <div class="code">
+            &lt;div x-data="{ 
+                data: null,
+                loading: false
+            }"&gt;
+                &lt;button @click="
+                    loading = true;
+                    data = await $fetch('/api/data');
+                    loading = false;
+                "&gt;
+                    Load Data
+                &lt;/button&gt;
+                &lt;div x-show="loading" class="loading"&gt;Loading...&lt;/div&gt;
+                &lt;div x-show="!loading && data" x-text="data"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        </div>
+        <div class="result">
+            <div x-data="{ 
+                data: null,
+                loading: false
+            }">
+                <button @click="
+                    loading = true;
+                    data = await $fetch('https://httpbin.org/delay/2');
+                    loading = false;
+                ">
+                    Load Data (2s delay)
+                </button>
+                <div x-show="loading" class="loading">Loading...</div>
+                <div x-show="!loading && data" x-text="data"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example 6: Multiple API Calls -->
+    <div class="example">
+        <h3>6. Multiple API Calls</h3>
+        <div class="code">
+            &lt;div x-data="{ 
+                users: null,
+                posts: null
+            }"&gt;
+                &lt;button @click="
+                    users = await $fetchjson('/api/users', 'data');
+                    posts = await $fetchjson('/api/posts', 'data');
+                "&gt;
+                    Load All Data
+                &lt;/button&gt;
+                &lt;div x-show="users"&gt;
+                    &lt;h4&gt;Users:&lt;/h4&gt;
+                    &lt;pre x-text="JSON.stringify(users, null, 2)"&gt;&lt;/pre&gt;
+                &lt;/div&gt;
+                &lt;div x-show="posts"&gt;
+                    &lt;h4&gt;Posts:&lt;/h4&gt;
+                    &lt;pre x-text="JSON.stringify(posts, null, 2)"&gt;&lt;/pre&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        </div>
+        <div class="result">
+            <div x-data="{ 
+                users: null,
+                posts: null
+            }">
+                <button @click="
+                    users = await $fetchjson('https://httpbin.org/json', 'slideshow');
+                    posts = await $fetchjson('https://httpbin.org/json', 'slideshow');
+                ">
+                    Load All Data
+                </button>
+                <div x-show="users">
+                    <h4>Users:</h4>
+                    <pre x-text="JSON.stringify(users, null, 2)"></pre>
+                </div>
+                <div x-show="posts">
+                    <h4>Posts:</h4>
+                    <pre x-text="JSON.stringify(posts, null, 2)"></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactive functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Alpine Fetch Advanced Examples loaded!');
+        });
+    </script>
+</body>
+</html>

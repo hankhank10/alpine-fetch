@@ -1,0 +1,47 @@
+{
+  "name": "alpine-fetch",
+  "version": "2.0.0",
+  "description": "A lightweight HTTP request helper for Alpine.js that simplifies making API calls directly in markup",
+  "main": "alpine-fetch.js",
+  "scripts": {
+    "build": "echo 'No build step required - vanilla JS'",
+    "test": "echo 'Tests coming soon'",
+    "lint": "eslint alpine-fetch.js",
+    "format": "prettier --write alpine-fetch.js",
+    "docs": "echo 'Documentation is in docs/ and README.md'"
+  },
+  "keywords": [
+    "alpinejs",
+    "alpine",
+    "fetch",
+    "http",
+    "api",
+    "ajax",
+    "javascript",
+    "vanilla-js"
+  ],
+  "author": "hankhank10",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hankhank10/alpine-fetch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hankhank10/alpine-fetch/issues"
+  },
+  "homepage": "https://github.com/hankhank10/alpine-fetch#readme",
+  "peerDependencies": {
+    "alpinejs": "^3.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "files": [
+    "alpine-fetch.js",
+    "alpine-fetch.min.js",
+    "alpine-fetch.d.ts",
+    "README.md",
+    "LICENSE"
+  ]
+}
