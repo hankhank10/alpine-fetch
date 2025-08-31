@@ -135,9 +135,9 @@
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <div x-data="{ hello_world: $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world') }">
-                            <span x-text="await hello_world"></span><br>
-                            <span x-text="await hello_world"></span>
+                        <div x-data="{ hello_world: await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world') }">
+                            <span x-text="hello_world"></span><br>
+                            <span x-text="hello_world"></span>
                         </div>
                     </div>
                 </div>

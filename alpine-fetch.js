@@ -32,23 +32,38 @@ async function xfetch(url, jsonItem = null, method = 'GET') {
     if (jsonItem == null) {
 
         return fetch(url, {method: method})
-            .then((response) => response.text())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.text();
+            })
             .then((responseText) => {
                 return responseText
             })
             .catch((error) => {
-              console.log(error)
+              console.error('Fetch error:', error);
+              throw error;
             });
 
     } else {
 
         return fetch(url, {method: method})
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then((responseJson) => {
+                if (jsonItem && !(jsonItem in responseJson)) {
+                    throw new Error(`JSON property '${jsonItem}' not found in response`);
+                }
                 return responseJson[jsonItem]
             })
             .catch((error) => {
-              console.log(error)
+              console.error('Fetch error:', error);
+              throw error;
             });
 
     }

@@ -39,7 +39,7 @@ Alpine Fetch adds magic functions to abstract a lot of this away and makes it mu
 
 ````html
 <div x-data>
-    <span x-text="await $fetch('/endpoint)"></span>
+    <span x-text="await $fetch('/endpoint')"></span>
 </div>
 ````
 
@@ -89,7 +89,7 @@ The `$fetch` helper can be used anywhere, so if you don't want to render it as t
 You might want to use the same data in multiple places in your markup. In that case, it would make sense to just fetch it once and use it multiple times. You can do this by retrieving it into the `x-data` tag like any other variable.
 
 ```html
-<div x-data="{ hello_world: await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world' }">
+<div x-data="{ hello_world: await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world') }">
     <span x-text="hello_world"></span>
     <span x-text="hello_world"></span>
 </div>
