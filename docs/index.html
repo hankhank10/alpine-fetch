@@ -2,10 +2,9 @@
 
     <head>
         <script defer src="https://cdn.jsdelivr.net/gh/hankhank10/alpine-fetch@main/alpine-fetch.js"></script>
-        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+        <script defer src="alpinejs.min.js"></script>
         <link rel="stylesheet" href="output.css">
         <Title>Alpine Fetch</Title>
-        <script src="https://kit.fontawesome.com/9d91eaa1d1.js" crossorigin="anonymous"></script>
 
     </head>
 
@@ -28,7 +27,6 @@
 
 
                 <a href="https://github.com/hankhank10/alpine-fetch" class="btn gap-2 btn-primary">
-                    <i class="fa-brands fa-github fa-xl"></i>
                     View on GitHub
                 </a>
 
@@ -90,13 +88,13 @@
                 </p>
                 <pre><code class="lang-html">
 <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span<span class="hljs-tag">
-    &lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    &lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetch('./hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             </code></pre>
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <span x-text="await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world')">This will
+                        <span x-text="await $fetch('./hello_world')">This will
                             be
                             replaced</span>
                     </div>
@@ -108,14 +106,14 @@
                     the markup. It behaves like any other variable.</p>
                 <pre><code class="lang-html"><span class="hljs-tag">
 &lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-html</span>=<span class="hljs-string">"await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-html</span>=<span class="hljs-string">"await $fetch('./hello_world')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             </code></pre>
 
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <span x-html="await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world_html')">This
+                        <span x-html="await $fetch('./hello_world_html')">This
                             will
                             be replaced</span>
                     </div>
@@ -127,7 +125,7 @@
                     <code>x-data</code> tag like any other variable.
                 </p>
                 <pre><code class="lang-html"><span class="xml">
-<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{ hello_world: await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world' }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>=<span class="hljs-string">"</span></span></span><span class="hljs-template-variable">{ hello_world: await $fetch('./hello_world' }</span><span class="xml"><span class="hljs-tag"><span class="hljs-string">"</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"hello_world"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"hello_world"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
@@ -135,7 +133,7 @@
 
                 <div class="p-5 border bg-gray-200">
                     <div x-data>
-                        <div x-data="{ hello_world: $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world') }">
+                        <div x-data="{ hello_world: $fetch('./hello_world') }">
                             <span x-text="await hello_world"></span><br>
                             <span x-text="await hello_world"></span>
                         </div>
@@ -149,7 +147,7 @@
                 </p>
                 <pre><code class="lang-html"><span class="hljs-tag">
 &lt;<span class="hljs-name">div</span> <span class="hljs-attr">x-data</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetchjson('https://expensive-crow-sarong.cyclic.cloud/some_json', jsonItem='weather')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">x-text</span>=<span class="hljs-string">"await $fetchjson('./some_json', jsonItem='weather')"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
             </code></pre>
 
@@ -158,7 +156,7 @@
                         <div x-data>
                             <p>
                                 The weather is <span
-                                    x-text="await $fetchjson('https://expensive-crow-sarong.cyclic.cloud/some_json', jsonItem='weather')"></span>
+                                    x-text="await $fetchjson('./some_json', jsonItem='weather')"></span>
                             </p>
                         </div>
                     </div>
@@ -184,7 +182,7 @@
     The weather <span class="hljs-keyword">is</span> &lt;span x-<span class="hljs-built_in">text</span>=<span class="hljs-string">"weather"</span>&gt;&lt;/span&gt;
 
     &lt;button
-        x-<span class="hljs-keyword">on</span>:click=<span class="hljs-string">"weather = await $fetchjson('https://expensive-crow-sarong.cyclic.cloud/some_json', jsonItem='weather')"</span>
+        x-<span class="hljs-keyword">on</span>:click=<span class="hljs-string">"weather = await $fetchjson('./some_json', jsonItem='weather')"</span>
     &gt;Click <span class="hljs-keyword">me</span> <span class="hljs-keyword">to</span> change <span class="hljs-keyword">the</span> weather&lt;/button&gt;
 
 &lt;/<span class="hljs-keyword">div</span>&gt;
@@ -200,7 +198,7 @@
 
                             <button
                                 class="btn"
-                                x-on:click="weather = await $fetchjson('https://expensive-crow-sarong.cyclic.cloud/some_json', jsonItem='weather')">Click
+                                x-on:click="weather = await $fetchjson('./some_json', jsonItem='weather')">Click
                                 me to change the weather</button>
 
                         </div>
@@ -215,13 +213,13 @@
                 <p>All of these examples use a simple API with the following endpoints:</p>
                 <ul>
                     <li><a
-                            href="https://expensive-crow-sarong.cyclic.cloud/hello_world">https://expensive-crow-sarong.cyclic.cloud/hello_world</a>
+                            href="./hello_world">./hello_world</a>
                     </li>
                     <li><a
-                            href="https://expensive-crow-sarong.cyclic.cloud/hello_world_html">https://expensive-crow-sarong.cyclic.cloud/hello_world_html</a>
+                            href="./hello_world_html">./hello_world_html</a>
                     </li>
                     <li><a
-                            href="https://expensive-crow-sarong.cyclic.cloud/some_json">https://expensive-crow-sarong.cyclic.cloud/some_json</a>
+                            href="./some_json">./some_json</a>
                     </li>
                 </ul>
             </article>
