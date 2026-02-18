@@ -70,7 +70,7 @@ The most basic example is to fetch a string from the server and populate it in y
 
 ```html
 <div x-data>
-    <span x-text="await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world')"></span>
+    <span x-text="await $fetch('https://myapi.com/greeting')"></span>
 </div>
 ```
 
@@ -80,7 +80,7 @@ The `$fetch` helper can be used anywhere, so if you don't want to render it as t
 
 ```html
 <div x-data>
-    <span x-html="await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world_html')"></span>
+    <span x-html="await $fetch('https://myapi.com/greeting-html')"></span>
 </div>
 ```
 
@@ -89,7 +89,7 @@ The `$fetch` helper can be used anywhere, so if you don't want to render it as t
 You might want to use the same data in multiple places in your markup. In that case, it would make sense to just fetch it once and use it multiple times. You can do this by retrieving it into the `x-data` tag like any other variable.
 
 ```html
-<div x-data="{ hello_world: await $fetch('https://expensive-crow-sarong.cyclic.cloud/hello_world' }">
+<div x-data="{ hello_world: await $fetch('https://myapi.com/greeting' }">
     <span x-text="hello_world"></span>
     <span x-text="hello_world"></span>
 </div>
@@ -101,7 +101,7 @@ You might want to use the same data in multiple places in your markup. In that c
 
 ```html
 <div x-data>
-    <span x-text="await $fetchjson('https://expensive-crow-sarong.cyclic.cloud/some_json', jsonItem='weather')"></span>
+    <span x-text="await $fetchjson('https://myapi.com/weather', jsonItem='weather')"></span>
 </div>
 ```
 
@@ -126,7 +126,7 @@ However you can also customise when they do the fetch however you like. In the b
     The weather is <span x-text="weather"></span>
     
     <button
-            x-on:click="weather = await $fetchjson('https://expensive-crow-sarong.cyclic.cloud/some_json', jsonItem='weather')"
+            x-on:click="weather = await $fetchjson('https://myapi.com/weather', jsonItem='weather')"
     >Click me to change the weather</button>
 
 </div>
