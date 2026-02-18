@@ -9,7 +9,7 @@ document.addEventListener('alpine:init', async () => {
             jsonItem = null,
             method = "GET"
         ) => {
-            let response = await xfetch(url = url, jsonItem = jsonItem, method = method)
+            let response = await xfetch(url, jsonItem, method)
             return await response;
         }
     })
@@ -19,7 +19,7 @@ document.addEventListener('alpine:init', async () => {
             url,
             method = "GET"
         ) => {
-            let response = await xfetch(url = url, jsonItem = null, method = method)
+            let response = await xfetch(url, null, method)
             return await response;
         }
     })
