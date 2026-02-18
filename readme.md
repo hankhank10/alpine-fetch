@@ -39,7 +39,7 @@ Alpine Fetch adds magic functions to abstract a lot of this away and makes it mu
 
 ````html
 <div x-data>
-    <span x-text="await $fetch('/endpoint)"></span>
+    <span x-text="await $fetch('/endpoint')"></span>
 </div>
 ````
 

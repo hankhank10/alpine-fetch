@@ -1,26 +1,16 @@
 
-
 // Alpine listeners
-document.addEventListener('alpine:init', async () => {
+document.addEventListener('alpine:init', () => {
 
     Alpine.magic('fetchjson', () => {
-        return async (
-            url,
-            jsonItem = null,
-            method = "GET"
-        ) => {
-            let response = await xfetch(url = url, jsonItem = jsonItem, method = method)
-            return await response;
+        return (url, jsonItem = null, method = "GET") => {
+            return xfetch(url, jsonItem, method);
         }
     })
 
     Alpine.magic('fetch', () => {
-        return async (
-            url,
-            method = "GET"
-        ) => {
-            let response = await xfetch(url = url, jsonItem = null, method = method)
-            return await response;
+        return (url, method = "GET") => {
+            return xfetch(url, null, method);
         }
     })
 
@@ -33,9 +23,6 @@ async function xfetch(url, jsonItem = null, method = 'GET') {
 
         return fetch(url, {method: method})
             .then((response) => response.text())
-            .then((responseText) => {
-                return responseText
-            })
             .catch((error) => {
               console.log(error)
             });
@@ -53,4 +40,3 @@ async function xfetch(url, jsonItem = null, method = 'GET') {
 
     }
 }
-
